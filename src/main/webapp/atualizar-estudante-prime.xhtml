@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+	<title>Atualizar Estudante PRIMEFACES</title>
+
+</h:head>
+
+<h:body>
+
+	<h:form id="form">
+		<h:inputHidden value="#{estudanteController.estudante.id}" />
+
+		<div class="p-grid ui-fluid">
+			<p:card styleClass="shadow-7" style="width: 25rem; margin: 3em;">
+				<f:facet name="title">
+					<p class="text-center">Atualizar Estudante PrimeFaces</p>
+				</f:facet>
+
+
+
+				<div class="p-col-4">
+
+					<p:outputLabel for="nome" value="Nome" />
+					<p:inputText value="#{estudanteController.estudante.nome}"
+						id="nome" required="true">
+						<f:validateLength minimum="3" maximum="30" />
+					</p:inputText>
+					<h:message for="firstName" />
+
+					<br />
+
+					<p:outputLabel for="email" value="Email" />
+					<p:inputText value="#{estudanteController.estudante.email}"
+						id="email" required="true">
+						<f:validateLength minimum="3" maximum="30" />
+					</p:inputText>
+					<p:message for="email" />
+				</div>
+
+
+				<f:facet name="footer">
+					<p:commandButton value="Alterar" icon="pi pi-check"
+						styleClass="rounded-button ui-button-primary ui-button-outlined"
+						action="#{estudanteController.alterarEstudante()}" />
+
+
+					<p:linkButton outcome="listar-estudantes-prime" icon="pi pi-times"
+						styleClass="rounded-button ui-button-secondary ui-button-outlined"
+						value="Voltar para a lista de consulta" />
+				</f:facet>
+
+
+
+
+
+
+				<div class="p-col-6"></div>
+			</p:card>
+		</div>
+	</h:form>
+</h:body>
+</html>
+

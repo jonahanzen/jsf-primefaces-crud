@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<link rel="stylesheet" href="https://unpkg.com/primeflex@3.1.0/primeflex.css"/>
+	<title>Novo Estudante PRIMEFACES</title>
+</h:head>
+
+<h:body>
+
+	<h:form id="form">
+
+		<div class="p-grid ui-fluid">
+			<p:card styleClass="shadow-7" style="width: 25rem; margin: 3em;">
+				<f:facet name="title">
+				<p class="text-center">Novo Estudante PrimeFaces</p> </f:facet>
+				
+
+
+				<div class="p-col-4">
+
+					<p:outputLabel for="nome" value="Nome" />
+					<p:inputText value="#{estudanteController.estudante.nome}"
+						id="nome" required="true">
+						<f:validateLength minimum="3" maximum="30" />
+					</p:inputText>
+					<h:message for="firstName" />
+					
+					<br />
+
+					<p:outputLabel for="email" value="Email"/>
+					<p:inputText value="#{estudanteController.estudante.email}"
+						id="email" required="true" >
+						<f:validateLength minimum="3" maximum="30" />
+						</p:inputText>
+					<p:message for="email" />
+				</div>
+
+
+				<f:facet name="footer">
+					<p:commandButton value="Cadastrar" icon="pi pi-check"
+						styleClass="rounded-button ui-button-primary ui-button-outlined"
+						action="#{estudanteController.novoEstudante()}" />
+
+
+					<p:linkButton outcome="listar-estudantes-prime" icon="pi pi-times"
+						styleClass="rounded-button ui-button-secondary ui-button-outlined"
+						value="Voltar para a lista de consulta" />
+				</f:facet>
+
+				<div class="p-col-6"></div>
+			</p:card>
+		</div>
+	</h:form>
+</h:body>
+</html>

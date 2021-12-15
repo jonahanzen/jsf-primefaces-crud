@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+
+<h:head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<title>Listar Estudante PRIMEFACES</title>
+</h:head>
+
+<h:body>
+	<div class="card">
+		<h:form>
+
+			<p:commandButton value="Novo Estudante" 
+			action="#{estudanteController.estudanteForm()}" styleClass="ui-button-outlined" icon="pi pi-check" />
+			
+
+			<p:dataTable value="#{estudanteController.todosEstudantes()}"
+				showGridlines="true" stripedRows="true" paginator="true" rows="5"
+				paginatorPosition="bottom" var="estudante" lazy="false">
+
+				<p:column headerText="Id" sortBy="#{estudante.id}"
+					filterBy="#{estudante.id}" exportable="false">
+					<h:outputText value="#{estudante.id}" />
+				</p:column>
+
+				<p:column headerText="Nome" sortBy="#{estudante.nome}"
+					filterBy="#{estudante.nome}" exportable="false">
+					<h:outputText value="#{estudante.nome}" />
+				</p:column>
+
+				<p:column headerText="Email" sortBy="#{estudante.email}"
+					filterBy="#{estudante.email}" exportable="false">
+					<h:outputText value="#{estudante.email}" />
+				</p:column>
+
+				<p:column headerText="Alterar">
+					<p:commandLink value="Alterar" ajax="false"
+						action="#{estudanteController.consultarEstudante(estudante.id)}"
+						styleClass="ui-button-raised ui-button-warning" />
+				</p:column>
+
+				<p:column headerText="Remover">
+					<p:commandLink value="Remover" update="@form" ajax="false"
+						onclick="if (!confirm('Voce tem certeza que deseja remover este estudante?')) return false"
+						action="#{estudanteController.removerEstudante(estudante.id)}" />
+				</p:column>
+
+			</p:dataTable>
+		</h:form>
+
+
+
+	</div>
+</h:body>
+</html>
